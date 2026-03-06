@@ -130,3 +130,34 @@ login.click()
 - Implicit
 - Explicit
 
+#### Implicit Wait
+
+```python
+
+driver.implicitly_wait(2)
+```
+
+#### Explicit Waits
+
+
+```python
+from selenium.webdriver.support.wait import WebDriverWait
+
+wait = WebDriverWait(driver, timeout=2)
+wait.until(lambda _ : revealed.is_displayed())
+```
+
+#### Expected Conditions
+
+```python
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
+wait = WebDriverWait(driver, timeout=2)
+wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@data-testid='user-name']")))
+
+user_name = driver.find_element(By.XPATH, "//*[@data-testid='user-name']")
+user_name.send_keys("user@email.com")
+```
