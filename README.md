@@ -124,6 +124,33 @@ login = driver.find_element(By.XPATH, "//*[@data-testid='login-button']")
 login.click()
 ```
 
+### Find elements from shadow DOM
+
+Shadow DOM is a browser feature that renders parts of the DOM tree inside a "shadow root". 
+This makes web components modular and prevents style leakage or accidental access from outside.
+
+In Selenium elements inside Shadow DOM are not reachable with normal find_element() calls, they live in a separate subtree.
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+driver.get("https://the-internet.herokuapp.com/shadowdom")
+
+# 1. Find the shadow host (the custom element that owns the shadow DOM)
+shadow_host = driver.find_element(By.XPATH, "//my-paragraph[0]")
+
+# 2. Get the shadow root (this is the key line!)
+shadow_root = shadow_host.shadow_root
+
+# 3. Now search INSIDE the shadow DOM — like a mini-driver
+inside_element = shadow_root.find_element(By.ID, "content")
+print(inside_element.text)          # → "Hello Shadow DOM"
+
+driver.quit()
+```
+
 ### Waits
 ---
 
@@ -149,6 +176,18 @@ wait.until(lambda _ : revealed.is_displayed())
 
 #### Expected Conditions
 
+expected_conditions (imported as EC) is a important module that provides conditions for explicit waits. 
+Used together with WebDriverWait to make tests more stable
+
+- `presence_of_element_located`
+- `visibility_of_element_located`
+- `element_to_be_clickable`
+- `text_to_be_present_in_element`
+- `title_is` / `title_contains`
+- `url_to_be` / `url_contains` 
+- `alert_is_present`
+- `invisibility_of_element_located`
+
 ```python
 
 from selenium.webdriver.common.by import By
@@ -160,4 +199,13 @@ wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@data-testid='user-n
 
 user_name = driver.find_element(By.XPATH, "//*[@data-testid='user-name']")
 user_name.send_keys("user@email.com")
+```
+
+Wait for any of (at least one) given conditions to be true 
+
+```python
+wait.until(EC.any_of(
+        EC.text_to_be_present_in_element((By.ID, "status"), "Success"),
+        EC.presence_of_element_located((By.CLASS_NAME, "error-message"))
+        ))
 ```
