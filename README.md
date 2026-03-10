@@ -144,9 +144,11 @@ shadow_host = driver.find_element(By.XPATH, "//my-paragraph[0]")
 # 2. Get the shadow root (this is the key line!)
 shadow_root = shadow_host.shadow_root
 
+# AFTER SHADOW ROOT ONLY USE BASIC CSS SELECTORS, ID, CLASS, NAME, CSS SELECTORS
+
 # 3. Now search INSIDE the shadow DOM — like a mini-driver
 inside_element = shadow_root.find_element(By.ID, "content")
-print(inside_element.text)          # → "Hello Shadow DOM"
+print(inside_element.text)
 
 driver.quit()
 ```
