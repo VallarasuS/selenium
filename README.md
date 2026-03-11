@@ -211,3 +211,44 @@ wait.until(EC.any_of(
         EC.presence_of_element_located((By.CLASS_NAME, "error-message"))
         ))
 ```
+
+### Switch To
+---
+
+Methods that help from switching from one context to another, for example, tabs, windows, frames and alert windows.
+
+- `switch_to.window`
+- `switch_to.frame(reference)`
+- `switch_to.default_content()`
+- `switch_to.alert()`
+- `switch_to.active_element`
+- `switch_to.parent_frame()`
+
+
+#### IFrame Example:
+
+```python
+# option 1
+driver.switch_to.frame("iframeResult")           # name or id attribute
+
+# option 2
+iframe_element = driver.find_element(By.ID, "iframe-element-id")
+driver.switch_to.frame(iframe_element)
+
+# switch back to main content
+driver.switch_to.default_content()
+```
+
+#### Alert Example
+
+```python
+
+alert = driver.switch_to.alert
+
+print("Alert text:", alert.text)
+
+alert.accept()       # OK / Yes
+# alert.dismiss()    # Cancel / No
+# alert.send_keys("Hello from Selenium")
+# alert.accept()
+```
