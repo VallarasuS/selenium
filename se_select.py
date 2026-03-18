@@ -10,7 +10,7 @@ options.add_argument("--allow-file-access-from-files")
 
 driver = webdriver.Chrome(options)
 driver.implicitly_wait(3)
-driver.get("file:///C:/Users/Valla/Documents/GitHub/Vallarasu.in/docs/test/select.html")
+driver.get("https://vallarasu.in/test/select")
 
 ed = driver.find_element(By.ID, "education")
 ed_select = Select(ed)

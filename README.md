@@ -252,3 +252,37 @@ alert.accept()       # OK / Yes
 # alert.send_keys("Hello from Selenium")
 # alert.accept()
 ```
+
+### Select
+---
+
+Select class enables interaction with Select / Drop Down UI element possible with following ways
+
+- options
+- select_by_index
+- select_by_visible_text
+- select_by_value
+
+``` python
+from selenium.webdriver.support.select import Select
+```
+
+#### Example
+
+```python
+driver = webdriver.Chrome(options)
+driver.implicitly_wait(3)
+driver.get("https://vallarasu.in/test/select")
+
+# locate and create Select
+ed = driver.find_element(By.ID, "education")
+ed_select = Select(ed)
+
+# options
+print(len(ed_select.options))
+
+# select an option
+ed_select.select_by_index(1)
+ed_select.select_by_visible_text("SSLC")
+ed_select.select_by_value("4")
+```
