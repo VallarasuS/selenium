@@ -286,3 +286,8 @@ ed_select.select_by_index(1)
 ed_select.select_by_visible_text("SSLC")
 ed_select.select_by_value("4")
 ```
+
+```python
+assert ed_select.all_selected_options[0] == ed_select.options[3]
+print(ed_select.all_selected_options[0].text)
+```
