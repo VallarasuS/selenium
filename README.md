@@ -43,7 +43,7 @@ from selenium import webdriver
 
 driver = webdriver.Chrome()
 
-driver.get("www.selenium.dev")  # load URL
+driver.get("https://vallarasu.in/test/")  # load URL
 driver.close()                  # close current tab
 driver.quit()                   # quit browser
 ```
