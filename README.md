@@ -8,6 +8,10 @@ Install the following
 - [Install Selenium](https://www.selenium.dev/documentation/webdriver/getting_started/install_library/)
 - `python -m pip install selenium`
 
+## Practice Test Site
+
+- [https://vallarasu.in/test/](https://vallarasu.in/test/)
+
 ##  Web Driver
 
 - Firefox
