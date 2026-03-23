@@ -1,3 +1,13 @@
+### Setup & Installation
+
+Install the following
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Python Standalone installer](https://www.python.org/downloads/)
+- [VS Code extension for python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+- [Install Selenium](https://www.selenium.dev/documentation/webdriver/getting_started/install_library/)
+- `python -m pip install selenium`
+
 ##  Web Driver
 
 - Firefox
