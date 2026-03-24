@@ -309,4 +309,85 @@ print(ed_select.all_selected_options[0].text)
 ## PyTest
 ---
 
+PyTest framework allows to write, manage and run tests easily
 
+### Setup
+
+`python -m install pytest`
+
+### How to Run Tests
+
+- `pytest test_file.py`
+- `pytest test_folder/`
+- `pytest -k test_class_name`
+
+### How to write Tests
+
+Write functions as usual in python with test logic.
+Just append test to the function name.
+
+```python
+def test_login_credentials_work():
+
+        # test code here
+        expected = "Login Success"
+        actual = "Login Failed"
+
+        # Assert
+        assert actual == expected
+```
+
+```python
+def test_validate_account_info():
+
+        # test code here
+        expected = "Login Success"
+        actual = "Login Failed"
+
+        # Assert
+        assert actual == expected, "Failed to Validate Account info"
+```
+
+### How to use Fixtures
+
+Fixtures are used to provide information to test function
+
+```python
+import pytest
+
+@pytest.fixture
+def login_credential():
+        return "amin", "p@assw0rd123"
+
+def test_login_works(login_credential):
+
+        user, password = login_credential
+        # test code here
+```
+
+```python
+import pytest
+from db import connect
+
+@pytest.fixture(scope="session")
+def db_connection():
+        connection = connect()
+        yield connection
+        connection.close()
+```
+
+### How to Parameterize Fixtures
+
+```python
+import pytest
+
+@pytest.mark.parametrize("user,password", [("admin", "pass123"), ("user", "p@assw0rd")])
+def login_credential(user, password):
+
+       # test code here
+        expected = "Login Success"
+        actual = "Login Failed"
+
+        # Assert
+        assert actual == expected, "Failed to Validate Login" 
+```
