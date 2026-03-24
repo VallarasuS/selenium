@@ -43,9 +43,9 @@ from selenium import webdriver
 
 driver = webdriver.Chrome()
 
-driver.get("https://vallarasu.in/test/")  # load URL
-driver.close()                  # close current tab
-driver.quit()                   # quit browser
+driver.get("https://vallarasu.in/test/")        # load URL
+driver.close()                                  # close current tab
+driver.quit()                                   # quit browser
 ```
 
 ### X-Path
@@ -305,3 +305,8 @@ ed_select.select_by_value("4")
 assert ed_select.all_selected_options[0] == ed_select.options[3]
 print(ed_select.all_selected_options[0].text)
 ```
+
+## PyTest
+---
+
+
