@@ -313,7 +313,7 @@ PyTest framework allows to write, manage and run tests easily
 
 ### Setup
 
-`python -m install pytest`
+`python -m pip install pytest`
 
 ### How to Run Tests
 
