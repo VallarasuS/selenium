@@ -9,11 +9,10 @@ import time
 # A - Act
 # A - Assert
 
-
 @pytest.fixture
 def user_credential():
     file = open("credential.txt", "r")
-    credentials = file.readline().split(",")
+    credentials = file.readline().split(",")    # "admin", "admin"
     file.close()
     return credentials
 
