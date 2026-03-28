@@ -1,3 +1,35 @@
+## Table of Contents
+
+- [Setup & Installation](#setup--installation)
+- [Practice Test Site](#practice-test-site)
+- [Web Driver](#web-driver)
+  - [Web Driver Methods](#web-driver-methods)
+- [X-Path](#x-path)
+  - [Format](#format)
+  - [Examples](#examples)
+- [CSS](#css)
+  - [Format](#format-1)
+- [Find Elements](#find-elements)
+  - [By Class](#by-class)
+- [Interactions](#interactions)
+  - [Click, Clear, Send Keys](#click-clear-send-keys)
+- [Waits](#waits)
+  - [Implicit Wait](#implicit-wait)
+  - [Explicit Waits](#explicit-waits)
+  - [Expected Conditions](#expected-conditions)
+- [Find elements from shadow DOM](#find-elements-from-shadow-dom)
+- [Switch To](#switch-to)
+  - [IFrame Example](#iframe-example)
+  - [Alert Example](#alert-example)
+- [Select](#select)
+  - [Example](#example)
+- [PyTest](#pytest)
+  - [Setup](#setup-1)
+  - [How to Run Tests](#how-to-run-tests)
+  - [How to write Tests](#how-to-write-tests)
+  - [How to use Fixtures](#how-to-use-fixtures)
+  - [How to Parameterize Fixtures](#how-to-parameterize-fixtures)
+
 ### Setup & Installation
 
 Install the following
@@ -138,35 +170,6 @@ login = driver.find_element(By.XPATH, "//*[@data-testid='login-button']")
 login.click()
 ```
 
-### Find elements from shadow DOM
-
-Shadow DOM is a browser feature that renders parts of the DOM tree inside a "shadow root". 
-This makes web components modular and prevents style leakage or accidental access from outside.
-
-In Selenium elements inside Shadow DOM are not reachable with normal find_element() calls, they live in a separate subtree.
-
-```python
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-driver = webdriver.Chrome()
-driver.get("https://the-internet.herokuapp.com/shadowdom")
-
-# 1. Find the shadow host (the custom element that owns the shadow DOM)
-shadow_host = driver.find_element(By.XPATH, "//my-paragraph[0]")
-
-# 2. Get the shadow root (this is the key line!)
-shadow_root = shadow_host.shadow_root
-
-# AFTER SHADOW ROOT ONLY USE BASIC CSS SELECTORS, ID, CLASS, NAME, CSS SELECTORS
-
-# 3. Now search INSIDE the shadow DOM — like a mini-driver
-inside_element = shadow_root.find_element(By.ID, "content")
-print(inside_element.text)
-
-driver.quit()
-```
-
 ### Waits
 ---
 
@@ -224,6 +227,35 @@ wait.until(EC.any_of(
         EC.text_to_be_present_in_element((By.ID, "status"), "Success"),
         EC.presence_of_element_located((By.CLASS_NAME, "error-message"))
         ))
+```
+
+### Find elements from shadow DOM
+
+Shadow DOM is a browser feature that renders parts of the DOM tree inside a "shadow root". 
+This makes web components modular and prevents style leakage or accidental access from outside.
+
+In Selenium elements inside Shadow DOM are not reachable with normal find_element() calls, they live in a separate subtree.
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+driver.get("https://the-internet.herokuapp.com/shadowdom")
+
+# 1. Find the shadow host (the custom element that owns the shadow DOM)
+shadow_host = driver.find_element(By.XPATH, "//my-paragraph[0]")
+
+# 2. Get the shadow root (this is the key line!)
+shadow_root = shadow_host.shadow_root
+
+# AFTER SHADOW ROOT ONLY USE BASIC CSS SELECTORS, ID, CLASS, NAME, CSS SELECTORS
+
+# 3. Now search INSIDE the shadow DOM — like a mini-driver
+inside_element = shadow_root.find_element(By.ID, "content")
+print(inside_element.text)
+
+driver.quit()
 ```
 
 ### Switch To
