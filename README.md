@@ -241,10 +241,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome()
-driver.get("https://the-internet.herokuapp.com/shadowdom")
+driver.get("https://vallarasu.in/test/shadow-dom.html")
 
 # 1. Find the shadow host (the custom element that owns the shadow DOM)
-shadow_host = driver.find_element(By.XPATH, "//my-paragraph[0]")
+shadow_host = driver.find_element(By.XPATH, "//div[@id='dob-container']")
 
 # 2. Get the shadow root (this is the key line!)
 shadow_root = shadow_host.shadow_root
@@ -252,7 +252,7 @@ shadow_root = shadow_host.shadow_root
 # AFTER SHADOW ROOT ONLY USE BASIC CSS SELECTORS, ID, CLASS, NAME, CSS SELECTORS
 
 # 3. Now search INSIDE the shadow DOM — like a mini-driver
-inside_element = shadow_root.find_element(By.ID, "content")
+inside_element = shadow_root.find_element(By.ID, "dob_day")
 print(inside_element.text)
 
 driver.quit()
