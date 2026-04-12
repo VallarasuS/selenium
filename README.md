@@ -87,6 +87,7 @@ driver.quit()                                   # quit browser
 
 - `// tag-name [ @attribute-name = 'attribute-value' ]`
 - `// tag-name [contains ( @attribute-name, 'partial' )]`
+- `// tag-name [text() = 'text displayed']`
 
 ### Examples
 
