@@ -14,6 +14,7 @@ import time
         # - refresh
         # - maximize window
 
+
 # Page
     # - title
     # - current_url 
