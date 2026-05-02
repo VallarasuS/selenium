@@ -98,6 +98,7 @@ driver.quit()                                   # quit browser
 - `//div[contains(@class,'modal')]//button[1]`
 - `//label[text()='Email']/following-sibling::input`
 - `//tr[td='John']//button[contains(text(),'Edit')]`
+- `//label[text()='Enter your email address']//ancestor::form//input[@title='Sign up']`
 
 
 ### CSS
