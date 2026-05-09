@@ -18,6 +18,7 @@ def test_key_combinations():
 
     # Act
     action = ActionChains(driver)
+    # method chaining
     action.click(input_el).key_down(Keys.CONTROL).send_keys("A").key_down(Keys.DELETE).perform()
     actual = input_el.text
     expected = ""
