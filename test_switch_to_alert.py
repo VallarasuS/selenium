@@ -21,6 +21,9 @@ def test_alert_window():
     time.sleep(5)
     alert.accept()
 
+    # switch to different window
+    # driver.switch_to.window(driver.window_handles[1])
+
     time.sleep(5)
 
     # Assert
