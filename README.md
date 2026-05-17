@@ -87,15 +87,14 @@ driver.quit()                                   # quit browser
 |---------------------------------------------------------|------------------------------------------------|
 | `// tag-name`                                           | `//button`                                     |
 | `// tag-name [ @attribute= 'value' ]`                   | `//button[@id='sign-in-btn']`                  |
+| `// tag-name [ text() = 'text displayed' ]`             | `//button[text()='Sign in']`                   |
 | `// tag-name [ contains ( @attribute, 'value' )]`       | `//button[contains(text(),'Sign')]`            |
 | `// tag-name [ starts-with ( @attribute, 'value' )]`    | `//input[starts-with(@id, 'user')]`            |
 | `// tag-name [ ends-with ( @attribute, 'value' )]`      | `//a[ends-with(@href, '.pdf')]`                |
-| `// tag-name [ text() = 'text displayed' ]`             | `//button[text()='Sign in']`                   |
-| `// tag-name [ contains(text(), 'text' )]`              | `//span[contains(text(), 'Welcome')]`          |
-| `// tag-name [@id='x']/parent::div`                     | `//span[@id='x']/parent::div`                  |
-| `// tag-name/ancestor::tag-name`                        | `//td/ancestor::table`                         |
-| `// tag-name/child::tag-name`                           | `//div/child::p`                               |
-| `// tag-name/descendant::tag-name`                      | `//div/descendant::span`                       |
+| `// tag-name [@id='x']/parent::tag-name`                | `//span[@id='x']/parent::div`                  |
+| `// tag-name//ancestor::tag-name`                       | `//td//ancestor::div`                          |
+| `// tag-name/child::tag-name`                           | `//div/child::button`                          |
+| `// tag-name//descendant::tag-name`                     | `//div//descendant::span`                      |
 | `// tag-name[@attribute='value']/following-sibling::li` | `//li[@id='item2']/following-sibling::li`      |
 | `// tag-name/preceding-sibling::tag-name`               | `//h3/preceding-sibling::h2`                   |
 | `// tag-name[@type='text' and @name='email']`           | `//input[@type='text' and @name='email']`      |
@@ -103,6 +102,7 @@ driver.quit()                                   # quit browser
 | `// tag-name[@id='menu']/*`                             | `//div[@id='menu']/*`                          |
 | `// * [@aria-hidden='true']`                            | `//*[@aria-hidden='true']`                     |
 | `// tag-name [@attribute='value'] // tag-name`          | `//div[@id='container']//button`               |
+
 
 
 ### CSS
