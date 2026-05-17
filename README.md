@@ -83,23 +83,26 @@ driver.quit()                                   # quit browser
 ### X-Path
 ---
 
-#### FORMAT
-
-- `// tag-name [ @attribute-name = 'attribute-value' ]`
-- `// tag-name [contains ( @attribute-name, 'partial' )]`
-- `// tag-name [text() = 'text displayed']`
-
-### Examples
-
-- `//*[@data-testid='login-button']`
-- `//button[@id='submit' or @name='submit']`
-- `//button[text()='Sign in']`
-- `//button[contains(text(),'Sign')]`
-- `//button[contains(@class,'btn-primary')]`
-- `//div[contains(@class,'modal')]//button[1]`
-- `//label[text()='Email']/following-sibling::input`
-- `//tr[td='John']//button[contains(text(),'Edit')]`
-
+| Format                                                       | Example                                        |
+|--------------------------------------------------------------|------------------------------------------------|
+| `// tag-name`                                                | `//button`                                     |
+| `// tag-name [ @attribute= 'value' ]`                        | `//button[@id='sign-in-btn']`                  |
+| `// tag-name [ contains ( @attribute, 'partial-value' )]`    | `//button[contains(text(),'Sign')]`            |
+| `// tag-name [ starts-with ( @attribute, 'partial-value' )]` | `//input[starts-with(@id, 'user')]`            |
+| `// tag-name [ ends-with ( @attribute, 'partial-value' )]`   | `//a[ends-with(@href, '.pdf')]`                |
+| `// tag-name [ text() = 'text displayed' ]`                  | `//button[text()='Sign in']`                   |
+| `// tag-name [ contains(text(), 'partial-text' )]`           | `//span[contains(text(), 'Welcome')]`          |
+| `// tag-name [@id='x']/parent::div`                          | `//span[@id='x']/parent::div`                  |
+| `// tag-name/ancestor::tag-name`                             | `//td/ancestor::table`                         |
+| `// tag-name/child::tag-name`                                | `//div/child::p`                               |
+| `// tag-name/descendant::tag-name`                           | `//div/descendant::span`                       |
+| `// tag-name[@attribute='value']/following-sibling::li`      | `//li[@id='item2']/following-sibling::li`      |
+| `// tag-name/preceding-sibling::tag-name`                    | `//h3/preceding-sibling::h2`                   |
+| `// tag-name[@type='text' and @name='email']`                | `//input[@type='text' and @name='email']`      |
+| `// tag-name[@type='submit' or @aria-label='Go']`            | `//button[@type='submit' or @aria-label='Go']` |
+| `// tag-name[@id='menu']/*`                                  | `//div[@id='menu']/*`                          |
+| `// * [@aria-hidden='true']`                                 | `//*[@aria-hidden='true']`                     |
+| `// tag-name [@attribute='value'] // tag-name`               | `//div[@id='container']//button`               |
 
 ### CSS
 ---
