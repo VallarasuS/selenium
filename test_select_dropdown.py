@@ -52,7 +52,11 @@ def test_dob_dates():
     driver.quit()
 
 
-test_dob_dates()
+# required only when executed manually
+if __name__ == "__main__":
+    test_dob_dates()
+
+
 
 
 # numbers = [1, 2, 3, 4]
@@ -63,4 +67,41 @@ test_dob_dates()
 # #     str_numbers.append(str(i))
 
 # print(str_numbers)
+
+from login_page import LoginPage
+
+
+def test_user_can_place_order():
+    pass
+
+    # // login
+    login()
+
+    # add to cart
+
+    # navigate to accounts
+
+    # verify order status == placed
+    get_order_status()
+
+    # logout
+    logout()
+
+def test_user_can_cancel_order():
+    pass
+
+    # login
+    login_page = LoginPage()
+    login_page.login()
+
+    # navigate to account / orders
+
+    # cancel order
+
+    # verify order status == cancelled
+    status == get_order_status()
+
+    # logout
+    logout()
+
 
