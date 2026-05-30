@@ -402,6 +402,14 @@ def test_login_works(login_credential):
         # test code here
 ```
 
+### Scopes
+
+- function (default)
+- class
+- module
+- package
+- session
+
 ```python
 import pytest
 from db import connect
