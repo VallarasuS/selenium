@@ -85,7 +85,6 @@ def test_order_works(credential, product):
 
     # Assert
     assert driver.current_url != "Login Auth Automation Testing"
-    driver.quit()
 
 
 
